@@ -8,7 +8,7 @@
     "@types/bun": "^1.4.2",
     "@types/lcov-parse": "^1.0.2",
     "console-table-printer": "^2.16.1",
-    "eslint": "9",
+    "eslint": "10",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "17.13.0",
