@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@happy-dom/global-registrator": "^20.14.5",
+    "@happy-dom/global-registrator": "^21.0.4",
     "@testing-library/react": "^16.3.3",
     "@types/bun": "^1.4.2",
     "@types/lcov-parse": "^1.0.2",
