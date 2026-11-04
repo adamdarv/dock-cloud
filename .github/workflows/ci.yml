@@ -1,0 +1,44 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+name: CI
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: test
+          MYSQL_DATABASE: dock_cloud_test
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -ptest" --health-interval=5s
+          --health-timeout=5s --health-retries=10
+    env:
+      DATABASE_HOST: 127.0.0.1
+      DATABASE_USER: root
+      DATABASE_PASSWORD: test
+      DATABASE_NAME: dock_cloud_test
+      BACKEND_URL: http://localhost:4000
+      FRONTEND_URL: http://localhost:3000
+      PORT: 4000
+      AUTH_SECRET: N3hVTvPneKRWTdyr0U0rgRQ8jp0L5j1M # DO NOT USE IN PRODUCTION, ONLY IN TEESTING
+
+      BUN_PUBLIC_BACKEND_URL: http://localhost:4000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install
+      - run: bun lint
+      - run: bun run --cwd packages/database drizzle-kit push --force
+      - run: bun run test
+      - run: bun run frontend:build
+      - run: bun run backend:build

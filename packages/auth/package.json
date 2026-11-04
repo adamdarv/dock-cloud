@@ -1,0 +1,16 @@
+{
+  "name": "@dock-cloud/auth",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
+  },
+  "dependencies": {
+    "@dock-cloud/database": "workspace:*",
+    "better-auth": "^1.7.7",
+    "drizzle-orm": "^1.0.0-rc.4"
+  }
+}
