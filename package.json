@@ -34,9 +34,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {
-    "drizzle-kit": "^0.31.11",
-    "drizzle-orm": "^0.45.4"
-  }
+  ]
 }
